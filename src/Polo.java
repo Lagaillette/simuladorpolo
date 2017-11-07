@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Polo{
+public class Polo implements Serializable{
 
 	public int fecha;
 	
@@ -372,7 +373,7 @@ public class Polo{
 	 */
 	public void buquesDePesca(){
 		int numeroOsosAMatar = getNbOsosPolares() / 15 ;
-		int numeroMorsasAMatar = getNbOsosPolares() / 20 ;
+		int numeroMorsasAMatar = getNbMorsas() / 20 ;
 		this.eliminarOsosPolares((int) numeroOsosAMatar);
 		this.eliminarMorsas((int) numeroMorsasAMatar);
 	}

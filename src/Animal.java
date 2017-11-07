@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Animal {
+public abstract class Animal implements Serializable{
 
 	public int fechaNacimiento;
 	

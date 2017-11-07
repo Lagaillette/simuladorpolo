@@ -97,8 +97,7 @@ public class GUIClass  {
 	     
 	    
 	    B_sig10Dias.addActionListener(new ActionListener(){  
-	    	public void actionPerformed(ActionEvent e){  
-	    		JOptionPane.showMessageDialog(window, "10 dias pasaron");  
+	    	public void actionPerformed(ActionEvent e){ 
 	    		
 	    		if(Main.polo!=null) {	 	    		
 	 	    			int i = 0;
@@ -133,8 +132,8 @@ public class GUIClass  {
 	    		}
 	    		
 	    		
-	    	        }  
-	    	    });
+	    	}  
+	    });
 	    
 	    
 	  //BUTTON B_Detalles------------------------------------------------------------
@@ -150,7 +149,13 @@ public class GUIClass  {
 	    
 	    
 	  //BUTTON Salida------------------------------------------------------------
-	    JButton B_Salida=new JButton("Salida del programa");  
+	   JButton B_Salida=new JButton("Salida del programa"); 
+	   B_Salida.addActionListener(new ActionListener(){  
+	   public void actionPerformed(ActionEvent e){  
+		   Main.serializePolo();	    	
+		   window.dispose();
+	   }  
+	   });
 	   // B_Salida.setBounds(300,50,200,30);  
 	    
 	    window.add(B_CreaElPolo);  
