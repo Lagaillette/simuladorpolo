@@ -3,13 +3,18 @@ import java.util.Random;
 
 public class Main {
 
+	public static Polo polo = null;
 	public Main() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public static void main(String[] args){
 		
+		
+		
+		
 		Polo polo = new Polo();
+		GUIClass appWindow = new GUIClass();
 		Animal animal = new Bacalao(12);
 		if(animal instanceof Pez){
 			System.out.println(animal);
@@ -25,14 +30,16 @@ public class Main {
 		System.out.println(polo.getMorsas().size());
 		System.out.println(polo.getNbMorsas());
 		System.out.println(animal);
-		polo.mostrarDetalles();
-		polo.transcurrirUnDia();
-		polo.mostrarDetalles();
-		polo.transcurrirUnDia();
-		polo.mostrarDetalles();
-		polo.transcurrirUnDia();
-		polo.mostrarDetalles();
-
+		
+		//*
+	//	polo.mostrarDetalles();
+		//polo.transcurrirUnDia();
+	//	polo.mostrarDetalles();
+	//	polo.transcurrirUnDia();
+	//	polo.mostrarDetalles();
+	//	polo.transcurrirUnDia();
+	//	polo.mostrarDetalles();
+	//	/*
 	}
 	
 }

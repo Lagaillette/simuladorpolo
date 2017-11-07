@@ -64,7 +64,8 @@ public class Polo{
 		
 	}
 	
-	public void transcurrirUnDia(){
+	public boolean transcurrirUnDia(){
+		if(this.animales.size()!=0) {
 		this.fecha += 1;
 		//hacemos el cambiamento de la temperatura
 		this.cambiamentoTemperatura();
@@ -76,10 +77,16 @@ public class Polo{
 		this.diaFocas();
 		this.diaMorsas();
 		this.diaEsquimales();
-		
 		if(this.animales.size() == 0){
 			System.out.println("en este dia " + this.fecha + ", el ecosistema se extinga..");
+			return false;
 		}
+		return true;
+		}
+		else
+		return false;
+		
+		
 		/**
 		this.fecha += 1;
 		
@@ -493,20 +500,21 @@ public class Polo{
 		this.temperaturaAgua += 2;
 	}
 	
-	public void mostrarDetalles(){
-		System.out.println("dia : " + this.fecha);
-		System.out.println("temperatura del agua : " + this.temperaturaAgua);
-		System.out.println("numero de peces : " + this.getNbPeces());
-		System.out.println("numero de Bacalaos : " + this.getNbBacalaos());
-		System.out.println("numero de Rayas : " + this.getNbRayas());
-		System.out.println("numero de Merluzas negras : " + this.getNbMerluzasNegras());
-		System.out.println("numero de Osos Polares: " + this.getNbOsosPolares());
-		System.out.println("numero de Esquimales : " + this.getNbEsquimales());
-		System.out.println("numero de Morsas : " + this.getNbMorsas());
-		System.out.println("numero de Focas : " + this.getNbFocas());
-		System.out.println("numero de Krill : " + this.krill);
+	public String mostrarDetalles(){
+		String result = "";
+		result += "dia : " + this.fecha + "\n";
+		result +="temperatura del agua : " + this.temperaturaAgua+ "\n";
+		result +="numero de peces : " + this.getNbPeces()+ "\n";
+		result +="numero de Bacalaos : " + this.getNbBacalaos()+ "\n";
+		result +="numero de Rayas : " + this.getNbRayas()+ "\n";
+		result +="numero de Merluzas negras : " + this.getNbMerluzasNegras()+ "\n";
+		result +="numero de Osos Polares: " + this.getNbOsosPolares()+ "\n";
+		result +="numero de Esquimales : " + this.getNbEsquimales()+ "\n";
+		result +="numero de Morsas : " + this.getNbMorsas()+ "\n";
+		result +="numero de Focas : " + this.getNbFocas()+ "\n";
+		result +="numero de Krill : " + this.krill+ "\n";
+		return result;
 	}
-	
 
 	public ArrayList getBacalaos(){
 		ArrayList<Animal> result = new ArrayList<Animal>();
