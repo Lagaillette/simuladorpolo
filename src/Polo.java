@@ -110,7 +110,7 @@ public class Polo implements Serializable{
 				this.animales.remove(animal);
 			}	
 			if(animal.reproducir()){
-				this.animales.add(new Pez(animal, this.fecha));
+				this.animales.add(new Pez(animal, this.fecha));				
 			}
 			if(animal.morrir()){
 				this.animales.remove(animal);
@@ -398,6 +398,106 @@ public class Polo implements Serializable{
 		result +="numero de Morsas : " + this.getNbMorsas()+ "\n";
 		result +="numero de Focas : " + this.getNbFocas()+ "\n";
 		result +="numero de Krill : " + this.krill+ "\n";
+		return result;
+	}
+	
+	public String listaPeces(){
+		String result = "";		
+		int numero = 0;		
+		//ArrayList<Animal> Animales = new ArrayList<Animal>();
+		Iterator it = this.animales.iterator();
+		while(it.hasNext()){
+			Animal animal = (Animal) it.next();
+			if(animal instanceof Pez){
+				numero += 1;
+				result += numero+  ". " + animal.toString();// + "\n";
+			}
+		}		
+		return result;
+	}
+	
+	public String listaMorsas(){
+		String result = "";		
+		int numero = 0;		
+		//ArrayList<Animal> Animales = new ArrayList<Animal>();
+		Iterator it = this.animales.iterator();
+		while(it.hasNext()){
+			Animal animal = (Animal) it.next();
+			if(animal instanceof Morsa){
+				numero += 1;
+				result += numero+  ". " + animal.toString();// + "\n";
+			}
+		}		
+		return result;
+	}
+	
+	public String listaOsos(){
+		String result = "";		
+		int numero = 0;		
+		//ArrayList<Animal> Animales = new ArrayList<Animal>();
+		Iterator it = this.animales.iterator();
+		while(it.hasNext()){
+			Animal animal = (Animal) it.next();
+			if(animal instanceof OsoPolar){
+				numero += 1;
+				result += numero+  ". " + animal.toString();// + "\n";
+			}
+		}		
+		return result;
+	}
+	
+	public String listaEsquimales(){
+		String result = "";		
+		int numero = 0;		
+		//ArrayList<Animal> Animales = new ArrayList<Animal>();
+		Iterator it = this.animales.iterator();
+		while(it.hasNext()){
+			Animal animal = (Animal) it.next();
+			if(animal instanceof Esquimal){
+				numero += 1;
+				result += numero+  ". " + animal.toString();// + "\n";
+			}
+		}		
+		return result;
+	}
+	
+	public String listaFocas(){
+		String result = "";		
+		int numero = 0;		
+		//ArrayList<Animal> Animales = new ArrayList<Animal>();
+		Iterator it = this.animales.iterator();
+		while(it.hasNext()){
+			Animal animal = (Animal) it.next();
+			if(animal instanceof Foca){
+				numero += 1;
+				result += numero+  ". " + animal.toString();// + "\n";
+			}
+		}		
+		return result;
+	}
+	
+	public String listaAnimales(){
+		String result = "";	
+		/*			
+		int numero = 0;		
+		//ArrayList<Animal> Animales = new ArrayList<Animal>();
+		Iterator it = this.animales.iterator();
+		while(it.hasNext()){
+			Animal animal = (Animal) it.next();
+			numero += 1;
+			result += numero+  ": " + animal.toString();
+			
+		}		*/
+		result += "PECES\n";
+		result += listaPeces();
+		result += "OSOS\n";
+		result += listaOsos();
+		result += "FOCAS\n";
+		result += listaFocas();
+		result += "MORSAS\n";
+		result += listaMorsas();
+		result += "ESQUIMALES\n";
+		result += listaEsquimales();
 		return result;
 	}
 

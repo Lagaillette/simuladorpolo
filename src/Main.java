@@ -66,7 +66,8 @@ public class Main {
 		      ois = new ObjectInputStream(fichier);
 		      polo = (Polo) ois.readObject();
 		      System.out.println("Polo : ");
-		      polo.mostrarDetalles();
+		     // polo.mostrarDetalles();     CAUSA PROBLEMAS!!!!!
+		      
 	    } catch (final java.io.IOException e) {
 	      e.printStackTrace();
 	    } catch (final ClassNotFoundException e) {

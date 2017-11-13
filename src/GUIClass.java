@@ -2,12 +2,16 @@
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.*;
 
 public class GUIClass  {
+	JTextArea listaDeAnimales = new JTextArea("");
+	JScrollPane ventanaDelUpdate = new JScrollPane(listaDeAnimales);
 	GUIClass(){
 		 javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			 public void run() {
@@ -15,6 +19,21 @@ public class GUIClass  {
 			 }
 			   });		
 	}
+	
+	void updateTexto() {
+		if(Main.polo!=null) {
+			String stringAnimales = Main.polo.listaAnimales();
+			if(stringAnimales.length()>0) {
+				listaDeAnimales = new JTextArea(stringAnimales);
+			}else {
+				listaDeAnimales = new JTextArea("Toda la populación de animales es muerta...");
+			}		
+		}else {
+			listaDeAnimales = new JTextArea("Polo no existe!");
+		}		
+		ventanaDelUpdate.setViewportView(listaDeAnimales);
+		}
+
 	
 	
 	void hazGUI() {
@@ -25,7 +44,14 @@ public class GUIClass  {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
 		
+		//funkcja do update'u listy, update po dniu
 		
+		updateTexto();
+				
+		
+		ventanaDelUpdate.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		listaDeAnimales.setEditable(false);
+		ventanaDelUpdate.setViewportView(listaDeAnimales);
 		//BUTTON Dia Siguiente------------------------------------------------------------
 		
 		JButton B_diaSiguiente=new JButton("Dia Siguiente");  
@@ -39,18 +65,17 @@ public class GUIClass  {
 	    			 	    		
 		    		//trigger dia siguiente
 	    			if(Main.polo.transcurrirUnDia()) {
+	    				updateTexto();
 	    				JOptionPane.showMessageDialog(window, "un dia paso");
 	    			}else {
 	    				JOptionPane.showMessageDialog(window, "Al dia " + Main.polo.fecha + " el sistema se ha extinguido...");
 	    			}
-		    		//Main.polo.mostrarDetalles();	
 	    		}else {
 	    			JOptionPane.showMessageDialog(window, "Polo no existe!!"); 	  
 	    		}
 	    		    		
 	    	        }  
-	    	    });
-	    
+	    	    });	    
 	    
 	    
 	    JButton B_CreaElPolo=new JButton("CreaElPolo");  
@@ -59,13 +84,9 @@ public class GUIClass  {
 	    
 	    B_CreaElPolo.addActionListener(new ActionListener(){  
 	    	public void actionPerformed(ActionEvent e){  
-	    		JOptionPane.showMessageDialog(window, "CreaElPolo"); 
-	    		
-	    		
-	    		//trigger crea polosur
+	    		JOptionPane.showMessageDialog(window, "Seha creado el nuevo Polo Sur");	
 	    		Main.polo = new Polo();
-	    		
-	    		
+	    		updateTexto();
 	    	        }  
 	    	    });
 	    
@@ -110,6 +131,8 @@ public class GUIClass  {
 			    		}else {
 			    			JOptionPane.showMessageDialog(window, "10 dias pasaron");
 			    		}
+			    		updateTexto();
+			    		
 	    		}else {
 	    			JOptionPane.showMessageDialog(window, "Polo no existe!!"); 	  
 	    		}	    		
@@ -142,10 +165,17 @@ public class GUIClass  {
 	    
 	    
 	    B_Detalles.addActionListener(new ActionListener(){  
-	    	public void actionPerformed(ActionEvent e){  
-	    	JOptionPane.showMessageDialog(window, Main.polo.mostrarDetalles()); 	    		
+	    	public void actionPerformed(ActionEvent e){ 
+	    		if(Main.polo!=null) {
+
+	    	    	JOptionPane.showMessageDialog(window, Main.polo.mostrarDetalles()); 
+	    			
+	    		}else {
+	    			JOptionPane.showMessageDialog(window, "Crea el Polo!"); 	    			
+	    		}		    		
 	    	        }  
 	    	    });
+	    
 	    
 	    
 	  //BUTTON Salida------------------------------------------------------------
@@ -163,6 +193,9 @@ public class GUIClass  {
 	    window.add(B_sig10Dias); 
 	    window.add(B_Calentamiento);
 	    window.add(B_Detalles);
+	    
+	    
+	    window.add(ventanaDelUpdate);
 	    window.add(B_Salida); 
 	    window.setLayout(new GridLayout(3,2));
 	}

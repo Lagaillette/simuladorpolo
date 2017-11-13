@@ -52,6 +52,8 @@ public abstract class Animal implements Serializable{
 	public String toString() {
 		return this.getClass().getName() + " [fechaNacimiento=" + fechaNacimiento + ", masaMuscular=" + masaMuscular + "] \n";
 	}
+
+	
 	
 	
 }
